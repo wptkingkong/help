@@ -1,0 +1,28 @@
+//
+//  Sky_PrefixHeader.pch
+//  helpSky
+//
+//  Created by peters on 15/12/24.
+//  Copyright © 2015年 peters. All rights reserved.
+//
+
+#ifndef Sky_PrefixHeader_pch
+#define Sky_PrefixHeader_pch
+
+#define KscreenWight [UIScreen mainScreen].bounds.size.width
+#define KscreenHeight [UIScreen mainScreen].bounds.size.height
+
+#import "Masonry.h"
+#import "IQKeyboardManager.h"
+#import "AFNetworking.h"
+#import "MBProgressHUD.h"
+
+#define WEATHERAPI @"420481e846084761c544e3e1f198995b"
+
+#define weakfiy() __weak __typeof__(self) self_weak_ = self
+#define strongfiy() __strong __typeof__(self) self = self_weak_
+#define KBackGroundColor  [UIColor colorWithRed:183/255.0 green:205/255.0 blue:211/255.0 alpha:1.0]
+#define kLightBlueColor  [UIColor colorWithRed:129/255.0 green:202/255.0 blue:235/255.0 alpha:1.0]
+#define kAtributeTextColor  [UIColor colorWithRed:63/255.0 green:204/255.0 blue:165/255.0 alpha:1.0] 
+#define klineGrayColor [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1.0] 
+#endif 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--note-->
+        <scene sceneID="vBN-yY-Wf0">
+            <objects>
+                <viewController storyboardIdentifier="ThirdCS" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lRW-Rp-9Ac" customClass="ThirdViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wSi-4B-NFP"/>
+                        <viewControllerLayoutGuide type="bottom" id="acL-5F-KOR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DrV-Xz-Uoy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFh-dv-ZO7">
+                                <rect key="frame" x="540" y="38" width="22" height="22"/>
+                                <connections>
+                                    <action selector="AddNote:" destination="lRW-Rp-9Ac" eventType="touchUpInside" id="IaQ-m4-wbx"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uFU-AP-RCY">
+                                <rect key="frame" x="20" y="78" width="560" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fN-WP-6ww">
+                                <rect key="frame" x="38" y="34" width="29" height="29"/>
+                                <state key="normal" image="icon-call"/>
+                                <connections>
+                                    <action selector="callMe:" destination="lRW-Rp-9Ac" eventType="touchUpInside" id="sF8-5E-XoN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="uFU-AP-RCY" secondAttribute="trailing" id="FKf-qw-vfd"/>
+                            <constraint firstItem="uFU-AP-RCY" firstAttribute="top" secondItem="MFh-dv-ZO7" secondAttribute="bottom" constant="18" id="PIT-rM-Dy5"/>
+                            <constraint firstItem="uFU-AP-RCY" firstAttribute="leading" secondItem="DrV-Xz-Uoy" secondAttribute="leadingMargin" id="ciL-Yq-D2s"/>
+                            <constraint firstItem="MFh-dv-ZO7" firstAttribute="top" secondItem="wSi-4B-NFP" secondAttribute="bottom" constant="18" id="cnj-VX-nl3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MFh-dv-ZO7" secondAttribute="trailing" constant="18" id="cz6-au-dmd"/>
+                            <constraint firstItem="8fN-WP-6ww" firstAttribute="leading" secondItem="DrV-Xz-Uoy" secondAttribute="leadingMargin" constant="18" id="nOH-Ga-lf8"/>
+                            <constraint firstItem="8fN-WP-6ww" firstAttribute="centerY" secondItem="MFh-dv-ZO7" secondAttribute="centerY" id="vWf-S4-Omz"/>
+                            <constraint firstItem="acL-5F-KOR" firstAttribute="top" secondItem="uFU-AP-RCY" secondAttribute="bottom" constant="18" id="xYm-tb-bAL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="note" id="fDi-pe-CVe"/>
+                    <connections>
+                        <outlet property="ListTableView" destination="uFU-AP-RCY" id="gXO-NP-rYl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUR-JO-Wd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="173"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-call" width="29" height="29"/>
+    </resources>
+</document>

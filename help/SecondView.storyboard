@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Second View Controller-->
+        <scene sceneID="Rct-eZ-fJF">
+            <objects>
+                <viewController storyboardIdentifier="SecondCS" useStoryboardIdentifierAsRestorationIdentifier="YES" id="S07-bE-eup" customClass="SecondViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WXg-yo-XVT"/>
+                        <viewControllerLayoutGuide type="bottom" id="1x5-n9-mIZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EHf-zO-GXj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTv-5V-U2x">
+                                <rect key="frame" x="38" y="85" width="22" height="22"/>
+                                <connections>
+                                    <action selector="pickMusic:" destination="S07-bE-eup" eventType="touchUpInside" id="xuh-aB-AWr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhn-g9-yzl">
+                                <rect key="frame" x="285" y="550" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HSZ-dE-QXi"/>
+                                </constraints>
+                                <state key="normal" title="播放"/>
+                                <state key="selected" title="暂停"/>
+                                <connections>
+                                    <action selector="controlMusic:" destination="S07-bE-eup" eventType="touchUpInside" id="lJD-xH-Ymb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgT-qK-BE8">
+                                <rect key="frame" x="38" y="550" width="45" height="30"/>
+                                <state key="normal" title="上一首"/>
+                                <connections>
+                                    <action selector="lastMusic:" destination="S07-bE-eup" eventType="touchUpInside" id="cAH-3W-n3B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QMI-ZI-yUB">
+                                <rect key="frame" x="532" y="79" width="30" height="34"/>
+                                <state key="normal" title="口">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopPlay:" destination="S07-bE-eup" eventType="touchUpInside" id="Ehj-iC-CWc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eBs-Gp-NiA">
+                                <rect key="frame" x="58" y="137" width="484" height="383"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ay9-j1-a6K">
+                                <rect key="frame" x="275" y="85" width="51" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpO-sp-j7T">
+                                <rect key="frame" x="517" y="550" width="45" height="30"/>
+                                <state key="normal" title="下一首"/>
+                                <connections>
+                                    <action selector="NestMusic:" destination="S07-bE-eup" eventType="touchUpInside" id="T6E-V5-49B"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eBs-Gp-NiA" firstAttribute="centerX" secondItem="EHf-zO-GXj" secondAttribute="centerX" id="7CZ-ku-IMq"/>
+                            <constraint firstItem="1x5-n9-mIZ" firstAttribute="top" secondItem="vhn-g9-yzl" secondAttribute="bottom" constant="20" id="8ZL-6f-qbJ"/>
+                            <constraint firstItem="ay9-j1-a6K" firstAttribute="centerX" secondItem="EHf-zO-GXj" secondAttribute="centerX" id="H60-PZ-PMn"/>
+                            <constraint firstItem="dTv-5V-U2x" firstAttribute="leading" secondItem="EHf-zO-GXj" secondAttribute="leadingMargin" constant="18" id="Hgj-EA-ze0"/>
+                            <constraint firstItem="eBs-Gp-NiA" firstAttribute="leading" secondItem="EHf-zO-GXj" secondAttribute="leadingMargin" constant="38" id="PEv-mS-AK6"/>
+                            <constraint firstItem="xgT-qK-BE8" firstAttribute="baseline" secondItem="vhn-g9-yzl" secondAttribute="baseline" id="PW1-ny-cOh"/>
+                            <constraint firstItem="dTv-5V-U2x" firstAttribute="top" secondItem="WXg-yo-XVT" secondAttribute="bottom" constant="21" id="SNL-bg-nEI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="dTv-5V-U2x" secondAttribute="leading" constant="18" id="TZ0-Pg-Vbj"/>
+                            <constraint firstItem="zpO-sp-j7T" firstAttribute="baseline" secondItem="vhn-g9-yzl" secondAttribute="baseline" id="ak5-Ye-hqc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zpO-sp-j7T" secondAttribute="trailing" constant="18" id="alh-jC-tLG"/>
+                            <constraint firstItem="vhn-g9-yzl" firstAttribute="top" secondItem="eBs-Gp-NiA" secondAttribute="bottom" constant="30" id="d1d-UL-txj"/>
+                            <constraint firstItem="eBs-Gp-NiA" firstAttribute="top" secondItem="ay9-j1-a6K" secondAttribute="bottom" constant="16" id="h1m-P2-g0J"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QMI-ZI-yUB" secondAttribute="trailing" constant="18" id="iiL-WZ-LKa"/>
+                            <constraint firstItem="QMI-ZI-yUB" firstAttribute="centerY" secondItem="dTv-5V-U2x" secondAttribute="centerY" id="j00-LR-7to"/>
+                            <constraint firstItem="eBs-Gp-NiA" firstAttribute="top" secondItem="dTv-5V-U2x" secondAttribute="bottom" constant="30" id="npG-iD-Duc"/>
+                            <constraint firstItem="ay9-j1-a6K" firstAttribute="top" secondItem="dTv-5V-U2x" secondAttribute="top" id="oEa-Wf-ixs"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="dTv-5V-U2x" secondAttribute="leading" id="sJW-qd-p0D"/>
+                            <constraint firstItem="vhn-g9-yzl" firstAttribute="centerX" secondItem="EHf-zO-GXj" secondAttribute="centerX" id="tv0-0B-L3E"/>
+                            <constraint firstItem="xgT-qK-BE8" firstAttribute="leading" secondItem="EHf-zO-GXj" secondAttribute="leadingMargin" constant="18" id="wPN-QM-gpw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TZ0-Pg-Vbj"/>
+                                <exclude reference="sJW-qd-p0D"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="q2i-ej-ebc"/>
+                    <connections>
+                        <outlet property="TitleLabel" destination="ay9-j1-a6K" id="MOA-qD-N41"/>
+                        <outlet property="artImage" destination="eBs-Gp-NiA" id="27C-5h-uuR"/>
+                        <outlet property="playButton" destination="vhn-g9-yzl" id="FoU-CJ-DRV"/>
+                        <outlet property="playMusic" destination="vhn-g9-yzl" id="oFl-de-iAd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ir0-in-ib8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="389"/>
+        </scene>
+    </scenes>
+</document>
