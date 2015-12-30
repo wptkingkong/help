@@ -10,7 +10,7 @@
 #import "addViewController.h"
 #import "detilViewController.h"
 
-@interface ThirdViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>{
+@interface ThirdViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,UITextFieldDelegate>{
     NSInteger rowindex;
 }
 
@@ -45,48 +45,37 @@
     _ListTableView.backgroundColor = klineGrayColor;
     _ListTableView.layer.cornerRadius = 5;
     UILongPressGestureRecognizer *longPressReger = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPress:)];
-    //最短长按的时间
     longPressReger.minimumPressDuration = 1.0;
-    //将事件添加到tableView
     [self.ListTableView addGestureRecognizer:longPressReger];
     
 }
 
-//长按事件处理
--(void)longPress:(UILongPressGestureRecognizer *)sender{
-    //判断状态是否是开始
+
+- (void)longPress:(UILongPressGestureRecognizer *)sender{
     if (sender.state==UIGestureRecognizerStateBegan) {
-        //得到cell用于提取选中行的下标
         UITableViewCell *cell = (UITableViewCell *)sender.view;
-        //得到下标
         rowindex=cell.tag;
-        //消息提示框
         UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"删除" message:@"确定要删除吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
         [alert show];
     }
     
 }
-//消息提示框确认按钮点击事件
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    //判断是非是确定时间的下标
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+   
     if (buttonIndex==1) {
-        //提取NSUserDefaults的数据(内容)
+       
         NSArray *tempArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"note"];
-        //复制数组
+    
         NSMutableArray *mutableArray = [tempArray mutableCopy];
-        //按下标移除要删除的数据
         [mutableArray removeObjectAtIndex:rowindex];
-        //重新封装到NSUserDefaults
         [[NSUserDefaults standardUserDefaults] setObject:mutableArray forKey:@"note"];
-        //提取NSUserDefaults的数据(时间)
         NSArray *tempDateArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"date"];
-        //复制数组
+        
         NSMutableArray *mutableDateArray = [tempDateArray mutableCopy];
-        //按下标移除要删除的数据
         [mutableDateArray removeObjectAtIndex:rowindex];
-        //重新封装到NSUserDefaults
         [[NSUserDefaults standardUserDefaults] setObject:mutableDateArray forKey:@"date"];
-        //刷新
         [self.ListTableView setNeedsDisplay];
         
         
@@ -97,7 +86,6 @@
     [super viewDidAppear:animated];
     self.dateArray=[[NSUserDefaults standardUserDefaults] objectForKey:@"date"];
     self.noteArray=[[NSUserDefaults standardUserDefaults] objectForKey:@"note"];
-    //刷新数据
     [self.ListTableView reloadData];
     
 }
@@ -127,9 +115,8 @@
 //设置行
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // cell的标识
+    
     static NSString *CellIdentifier = @"Cell";
-    //初始化行
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell==nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
@@ -140,34 +127,25 @@
         note = [self.noteArray objectAtIndex:indexPath.row];
     };
     NSString *date = [self.dateArray objectAtIndex:indexPath.row];
-    //得到note的长度
     NSUInteger charnum = [note length];
-    //判断note的长度如果大于22个字符用省略号表示
     if (charnum < 20) {
         cell.textLabel.text = note;
     }
     else{
         cell.textLabel.text = [[note substringToIndex:18] stringByAppendingString:@"..."];
     }
-    //设置cell的标识用于获取选中行
     cell.tag = indexPath.row;
-    //填充时间
     cell.detailTextLabel.text = date;
-    //设置字体
     cell.detailTextLabel.font = [UIFont systemFontOfSize:10];
     return cell;
 }
-//行的点击事件
+
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    NSLog(@"-- dianji");
-    //初始化DetailViewController
+
     detilViewController *detailView=[[detilViewController alloc] init];
-    //用导航推送到addView
-    
     [self.navigationController pushViewController:detailView animated:YES];
-    
-    //选中行标识传值
     detailView.index=[indexPath row];
 }
 
@@ -175,14 +153,33 @@
 
 - (IBAction)AddNote:(id)sender {
     addViewController* addView=[[addViewController alloc] init];
-    //用导航推送到addView
     [self.navigationController pushViewController:addView animated:YES];
     
 }
 - (IBAction)callMe:(id)sender {
-    NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"13732239853"];
+
     
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"拨号"
+                                                                              message: @"输入手机号"
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"numbers";
+        
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+    }];
+
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSArray * textfields = alertController.textFields;
+        UITextField * numfield = textfields[0];
+        NSMutableString * str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",numfield.text];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+        
+        
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

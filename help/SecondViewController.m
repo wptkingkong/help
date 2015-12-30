@@ -122,9 +122,9 @@
 //选择完成
 -(void)mediaPicker:(MPMediaPickerController *)mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
     mediaItem = mediaItemCollection;
-    cractItem =[mediaItemCollection.items firstObject];//第一个播放音乐
+    cractItem =[mediaItemCollection.items firstObject];
     MPMediaItemArtwork *artwork= [cractItem valueForKey:MPMediaItemPropertyArtwork];
-    UIImage *image=[artwork imageWithSize:CGSizeMake(artWight - 20, artHeight - 20)];//专辑图片
+    UIImage *image=[artwork imageWithSize:CGSizeMake(artWight - 20, artHeight - 20)];
     NSLog(@"标题：%@,表演者：%@,专辑：%@",cractItem.title ,cractItem.artist,cractItem.albumTitle);
     [self.artImage setImage:image];
     self.TitleLabel.text = [NSString stringWithFormat:@"%@\n%@",cractItem.title,cractItem.artist];

@@ -172,7 +172,7 @@
         if (indexPath.row == 0 ) {
             str = [NSString stringWithFormat:@"当前温度 ：%@",_Finaldict[@"temp"]];
             label.text = str;
-            //          [_colV reloadData];
+  
             NSLog(@"%i",i);
             i++;
         }
@@ -241,7 +241,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSInteger index = 0;
     NSArray *title = @[@"姓名:",@"性别:"];
-    NSArray *detil = @[@"孙娇娇",@"girl"];
+    NSArray *detil = @[@"hiahia",@"hybird"];
     cell.textLabel.text = title[index];
     cell.detailTextLabel.text = detil[index];
     index++;

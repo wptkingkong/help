@@ -28,7 +28,7 @@
     //设置控制器为Window的根控制器
 
     self.window.rootViewController=tb;
-    //b.创建子控制器
+
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ViewController" bundle:nil];
     ViewController *c1=[storyboard instantiateViewControllerWithIdentifier:@"ViewCS"];
     c1.tabBarItem.image=[UIImage imageNamed:@"icon-I"];
@@ -58,8 +58,6 @@
         
         if (status == 0) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.window animated:YES];
-            
-            // Configure for text only and offset down
             hud.mode = MBProgressHUDModeText;
             hud.labelText = @"网络已断开,请检查网络设置";
             hud.margin = 10.f;
